@@ -1,0 +1,21 @@
+type Account {
+    email: String! @unique
+    user: User
+}
+
+type User {
+    comments: [Comment] @relation
+    handle: String @unique
+    account: Account
+}
+
+type Comment {
+    text: String!
+    user: User!
+    postSlug: String!
+}
+
+type Query {
+    commentsByPost(postSlug: String) : [Comment]
+}
+
